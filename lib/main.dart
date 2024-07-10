@@ -1,14 +1,27 @@
 import 'dart:ui';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 import 'app.dart';
+import 'core/utils/injections.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await initInjections();
+
+
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const MyApp());
 }
 
-///My app class
 class MyApp extends StatelessWidget {
   ///constructor
   const MyApp({super.key});

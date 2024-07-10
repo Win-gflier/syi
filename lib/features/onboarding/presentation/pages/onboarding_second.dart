@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:video_player/video_player.dart';
 
-import '../../core/styles/colors.dart';
-import '../../core/widgets/bullet_point.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../../../core/styles/colors.dart';
+import '../../../../core/widgets/bullet_point.dart';
+import '../../../../core/widgets/primary_button.dart';
+import 'onboarding.dart';
 
 class OnboardingSecond extends StatelessWidget {
   const OnboardingSecond({super.key});
@@ -20,7 +19,6 @@ class OnboardingSecond extends StatelessWidget {
           style: Theme.of(context).textTheme.headlineLarge,
         ),
       ),
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -87,15 +85,15 @@ class OnboardingSecond extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 40, horizontal: 16),
-
+                padding:
+                    const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
                 child: PrimaryButton(
                     label: 'Next',
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
                     onPressed: () {
-                      Navigator.pushNamed(context, '/third');
+                      Navigator.pushNamed(
+                          context, routePrefixOnboardingThirdPage);
                     }),
               ),
             )

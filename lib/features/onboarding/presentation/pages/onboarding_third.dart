@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../core/styles/colors.dart';
-import '../../core/widgets/bullet_point.dart';
-import '../../core/widgets/primary_button.dart';
+import '../../../../core/styles/colors.dart';
+import '../../../../core/utils/injections.dart';
+import '../../domain/usecases/auth_usecase.dart';
+import '../bloc/auth_bloc.dart';
 
 class OnboardingThird extends StatelessWidget {
-  const OnboardingThird({super.key});
+  OnboardingThird({super.key});
+
+  final AuthBloc _bloc = AuthBloc(authsUseCase: sl<AuthUsecase>());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -26,7 +28,10 @@ class OnboardingThird extends StatelessWidget {
                   ),
                   Text(
                     'SYI - Share Your Ideas',
-                    style: Theme.of(context).textTheme.headlineLarge,
+                    style: Theme
+                        .of(context)
+                        .textTheme
+                        .headlineLarge,
                   ),
                 ],
               ),
@@ -44,7 +49,7 @@ class OnboardingThird extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius:
-                              BorderRadius.circular(8.0), // Rounded corners
+                          BorderRadius.circular(8.0), // Rounded corners
                         ),
                         backgroundColor: Colors.black,
                         foregroundColor: Colors.white,
@@ -60,7 +65,9 @@ class OnboardingThird extends StatelessWidget {
                       label: const Text(
                         'Continue with Gmail',
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        googleSignIn();
+                      },
                     ),
                   ),
                   const SizedBox(height: 28),
@@ -69,27 +76,28 @@ class OnboardingThird extends StatelessWidget {
                     child: RichText(
                         text: TextSpan(
                             text: 'By continuing you agree to',
-                            style: Theme.of(context)
+                            style: Theme
+                                .of(context)
                                 .textTheme
                                 .headlineSmall
                                 ?.copyWith(fontSize: 18, color: Colors.white),
                             children: const <InlineSpan>[
-                          TextSpan(
-                              text: ' terms and conditions',
-                              style: TextStyle(color: AppColors.yellow),
-                              children: [
-                                TextSpan(
-                                    text: ' and\n',
-                                    style: TextStyle(color: Colors.white),
-                                    children: <InlineSpan>[
-                                      TextSpan(
-                                        text: ' privacy policy',
-                                        style:
+                              TextSpan(
+                                  text: ' terms and conditions',
+                                  style: TextStyle(color: AppColors.yellow),
+                                  children: [
+                                    TextSpan(
+                                        text: ' and\n',
+                                        style: TextStyle(color: Colors.white),
+                                        children: <InlineSpan>[
+                                          TextSpan(
+                                            text: ' privacy policy',
+                                            style:
                                             TextStyle(color: AppColors.yellow),
-                                      )
-                                    ])
-                              ])
-                        ])),
+                                          )
+                                        ])
+                                  ])
+                            ])),
                   )
                 ],
               ),
@@ -97,6 +105,14 @@ class OnboardingThird extends StatelessWidget {
             const SizedBox(height: 32)
           ],
         ),
+      ),
+    );
+  }
+
+  void googleSignIn({bool withLoading = true}) {
+    _bloc.add(
+      OnAuthEvent(
+        withLoading: withLoading,
       ),
     );
   }

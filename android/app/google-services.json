@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "108208997647",
+    "project_id": "syi-app",
+    "storage_bucket": "syi-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:108208997647:android:75efe1f1672ca185116a7a",
+        "android_client_info": {
+          "package_name": "com.encro.syi.syi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "108208997647-ndk4rpb80fhi6m0s6nq523e2la26kcv8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.encro.syi.syi",
+            "certificate_hash": "abe18ee9750e5a82d31eb45786753bc3a1904148"
+          }
+        },
+        {
+          "client_id": "108208997647-gollkiee2gd60emcabuftmn0pcu447vs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhXjX4Ko-68ZQmzAU09t7FiavHAduYDQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "108208997647-gollkiee2gd60emcabuftmn0pcu447vs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
 
-import '../../core/styles/colors.dart';
-import '../../core/widgets/primary_button.dart';
-import 'onboarging_second.dart';
+import '../../../../core/styles/colors.dart';
+import '../../../../core/widgets/primary_button.dart';
+import 'onboarding.dart';
+
 
 class OnboardingFirst extends StatefulWidget {
   const OnboardingFirst({super.key});
@@ -52,7 +52,6 @@ class _OnboardingFirstState extends State<OnboardingFirst> {
   Widget build(BuildContext context) {
     _controller.addListener(() {});
     return Scaffold(
-      backgroundColor: Colors.black,
       body: SafeArea(
         top: false,
         child: Column(
@@ -143,7 +142,7 @@ class _OnboardingFirstState extends State<OnboardingFirst> {
                 child: PrimaryButton(
                     label: 'Begin your creative journey',
                     onPressed: () {
-                      Navigator.pushNamed(context, '/second');
+                      Navigator.pushNamed(context, routePrefixOnboardingSecondPage);
                     }),
               ),
             )
