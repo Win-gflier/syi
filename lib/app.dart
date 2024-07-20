@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'features/main/base.dart';
+import 'core/router/router.dart';
+import 'features/main/presentation/pages/base.dart';
 import 'features/onboarding/presentation/pages/onboarding.dart';
 
 const String routeHome = '/home';
@@ -40,24 +41,8 @@ class Main extends StatelessWidget {
       ),
       home: Stack(
         children: <Widget>[
-          Navigator(
-            onGenerateRoute: (RouteSettings settings) {
-              late Widget page;
-
-              if (signed) {
-                page = const Base();
-              } else {
-                page = Onboarding(
-                  setupPageRoute: routePrefixOnboardingFirst,
-                );
-              }
-              return MaterialPageRoute<dynamic>(
-                builder: (BuildContext context) {
-                  return page;
-                },
-                settings: settings,
-              );
-            },
+          const Navigator(
+            onGenerateRoute: AppRouter.onGenerateRoute,
           ),
           Positioned.fill(
             child: IgnorePointer(

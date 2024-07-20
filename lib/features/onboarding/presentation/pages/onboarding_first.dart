@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../../../core/router/router.dart';
 import '../../../../core/styles/colors.dart';
+import '../../../../core/utils/constant/storage.dart';
 import '../../../../core/widgets/primary_button.dart';
 import 'onboarding.dart';
-
 
 class OnboardingFirst extends StatefulWidget {
   const OnboardingFirst({super.key});
@@ -23,9 +24,7 @@ class _OnboardingFirstState extends State<OnboardingFirst> {
     super.initState();
 
     _controller = VideoPlayerController.networkUrl(
-      Uri.parse(
-        'https://firebasestorage.googleapis.com/v0/b/syi-app.appspot.com/o/onboarding_video.mp4?alt=media&token=54bfb010-0946-4b58-9b45-1d31f0ae6486',
-      ),
+      Uri.parse(Storage.onboardingVideoUrl),
     );
 
     _controller.addListener(() {
@@ -97,7 +96,8 @@ class _OnboardingFirstState extends State<OnboardingFirst> {
                         child: SvgPicture.asset('assets/line_dash.svg',
                             fit: BoxFit.fill)),
                     Padding(
-                      padding: const EdgeInsets.only(top: 40, left: 16, right: 16),
+                      padding:
+                          const EdgeInsets.only(top: 40, left: 16, right: 16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -137,12 +137,13 @@ class _OnboardingFirstState extends State<OnboardingFirst> {
             Align(
               alignment: Alignment.centerRight,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 40, horizontal: 16),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
                 child: PrimaryButton(
                     label: 'Begin your creative journey',
                     onPressed: () {
-                      Navigator.pushNamed(context, routePrefixOnboardingSecondPage);
+                      Navigator.pushNamed(
+                          context, routePrefixOnboardingSecondPage);
                     }),
               ),
             )
